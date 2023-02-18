@@ -26,7 +26,7 @@ class Bot:
         """Sends video to a chat"""
         context.bot.send_video(chat_id=update.message.chat_id, video=open(file_path, 'rb'), supports_streaming=True)
 
-    def send_text(self, update,  text, quote=False):
+    def send_text(self, update, text, quote=False):
         """Sends text to a chat"""
         # retry https://github.com/python-telegram-bot/python-telegram-bot/issues/1124
         update.message.reply_text(text, quote=quote)
@@ -43,13 +43,26 @@ class QuoteBot(Bot):
 
 
 class YoutubeBot(Bot):
-    pass
+
+    def _message_handler(self, update, context):
+        self.dowmload( update, context, update.message.text)
+
+
+    def dowmload(self, update, context, text):
+        youtube = []
+        num = 0
+        youtube = search_download_youtube_video(text)
+
+        self.send_video(update,context, youtube[num])
 
 
 if __name__ == '__main__':
     with open('.telegramToken') as f:
         _token = f.read()
 
-    my_bot = Bot(_token)
+    my_bot = YoutubeBot(_token)
     my_bot.start()
+
+
+
 
