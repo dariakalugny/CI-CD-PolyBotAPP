@@ -6,6 +6,4 @@ COPY . /app/
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY ../token/.telegramToken /app/
-
 CMD ["python3", "bot.py"]
