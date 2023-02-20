@@ -41,7 +41,7 @@ class QuoteBot(Bot):
 
         self.send_text(update, f'Your original message: {update.message.text}', quote=to_quote)
 
-
+""""
 class YoutubeBot(Bot):
 
     def _message_handler(self, update, context):
@@ -54,15 +54,16 @@ class YoutubeBot(Bot):
         youtube = search_download_youtube_video(text)
 
         self.send_video(update,context, youtube[num])
-
+"""
 
 if __name__ == '__main__':
     with open('.telegramToken') as f:
         _token = f.read()
 
 
-    print(_token)
-    my_bot = YoutubeBot(_token)
+
+    #my_bot = YoutubeBot(_token)
+    my_bot = Bot(_token)
     my_bot.start()
 
 
