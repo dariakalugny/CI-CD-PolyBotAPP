@@ -4,8 +4,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'git-hub-ron', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                withCredentials([usernamePassword(credentialsId: 'dariakalugny', passwordVariable: 'pass', usernameVariable: 'user')]) {
 
+                sh "sudo docker build -t dariakalugny/PolyBot-${env.BUILD_NUMBER} ."
+                sh "sudo docker login --username $user --password $pass"
+                sh "sudo docker push dariakalugny/PolyBot-${env.BUILD_NUMBER}"
 
                 sh '''
                 docker login --username $user --password $pass
