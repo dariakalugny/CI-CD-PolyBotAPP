@@ -1,6 +1,13 @@
 pipeline {
     agent any
 
+    options {
+    buildDiscarder(logRotator(daysToKeepStr: '30'))
+    disableConcurrentBuilds()
+    timestamps()
+    timeout(time: 10, unit: 'MINUTES')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -9,20 +16,14 @@ pipeline {
                 sh sudo docker build -t dariakalugny/PolyBot-${env.BUILD_NUMBER}.
                 sh sudo docker login --username $user --password $pass
                 sh sudo docker push dariakalugny/PolyBot-${env.BUILD_NUMBER}
-
-                sh '''
-                docker login --username $user --password $pass
-                docker build ...
-                docker tag ...
-                docker push ...
-           '''
                 }
             }
         }
 
         post('Stage II') {
             always {
-                sh echo "stage II..."
+                  bat "docker image prune -a"
+
             }
         }
 
@@ -31,5 +32,12 @@ pipeline {
                 sh 'echo echo "stage III..."'
             }
         }
+
+        post{
+            always{
+                bat "docker image prune -a"
+            }
+        }
+
     }
 }
