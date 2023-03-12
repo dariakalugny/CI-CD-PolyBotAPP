@@ -30,25 +30,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Stage II') {
-            always {
-                  bat "docker image prune -a"
-
-            }
-        }
-
-        stage('Stage III ...') {
-            steps {
-                sh 'echo echo "stage III..."'
-            }
-        }
-
-        post{
-            always{
-                bat "docker image prune -a"
-            }
-        }
-
     }
 }
