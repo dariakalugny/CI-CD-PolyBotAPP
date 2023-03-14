@@ -15,10 +15,11 @@ pipeline {
         args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
     }
     }
-  environment{
+    environment{
         SNYK_TOKEN = credentials('snyk')
     }
 
+    stages {
         stage('Build') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
