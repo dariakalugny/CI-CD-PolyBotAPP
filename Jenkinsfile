@@ -7,8 +7,6 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
    }
 
-  
-
   agent {
     docker {
         image 'jenkins-agent:latest'
