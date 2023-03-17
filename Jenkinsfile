@@ -32,9 +32,10 @@ pipeline {
         }
     }
 }
-
+'''
 post{
   always{
-      sh "docker rmi -f dariakalugny/polybot-${env.BUILD_NUMBER}"
+      sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
    }
  }
+'''
