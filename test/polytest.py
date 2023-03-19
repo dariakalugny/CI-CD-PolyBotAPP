@@ -1,13 +1,18 @@
 import unittest
 from unittest.mock import MagicMock
-from bot import Bot, QuoteBot
-from loguru import logger
+import sys
+import os
+
+# Add the parent directory to the Python path
+# parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+# sys.path.append(parent_dir)
+from bot import QuoteBot
 
 
 class TestBot(unittest.TestCase):
 
     def setUp(self):
-        with open('../.telegramToken') as f:
+        with open('.telegramToken') as f:
             _token = f.read()
         # create a mock updater object
         self.updater = MagicMock()
@@ -25,16 +30,15 @@ class TestBot(unittest.TestCase):
 
         # assert that reply_text method was called with the expected arguments
         update.message.reply_text.assert_called_once_with('Hello, world!', quote=False)
-    
+
     def test_send_text2(self):
-         # create a mock update object
+        # create a mock update object
         update = MagicMock()
         # call send_text method
         self.bot.send_text(update, "Don't quote me please")
 
         # assert that reply_text method was called with the expected arguments
         update.message.reply_text.assert_called_once_with("Don't quote me please", quote=False)
-
 
     def test_message_handler(self):
         # create a mock update object
@@ -53,7 +57,7 @@ class TestBot(unittest.TestCase):
         self.bot._message_handler(update, context)
 
         # Assert that the send_text method was called once with the expected arguments
-        mock_send_text.assert_called_once_with(update, f'Your original message: {update.message.text}',quote=True)
+        mock_send_text.assert_called_once_with(update, f'Your original message: {update.message.text}', quote=True)
 
         # assert that send_text method was called with the expected arguments
         # self.bot.send_text.assert_called_once_with(update, f'Your original message: {update.message.text}')
