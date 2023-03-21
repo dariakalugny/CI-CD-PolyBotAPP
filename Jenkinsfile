@@ -19,7 +19,7 @@ pipeline {
 
     stages {
         stage('test') {
-               steps{
+              steps{
                  withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')]) {
                  sh "cp ${TELEGRAM_TOKEN} .telegramToken"
                  sh 'pip3 install -r requirements.txt'
@@ -45,7 +45,7 @@ pipeline {
         }
     }
 
-}
+
 '''
 post{
   always{
