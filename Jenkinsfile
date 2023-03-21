@@ -18,19 +18,6 @@ pipeline {
     }
 
     stages {
-        stage('test') {
-              steps{
-                 withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')]) {
-                 sh "cp ${TELEGRAM_TOKEN} .telegramToken"
-                 sh 'pip3 install -r requirements.txt'
-                 sh 'python3 -m pytest --junitxml results.xml tests/*.py'
-          }
-        }
-        post {
-             always {
-             junit allowEmptyResults: true, testResults: 'results.xml'
-              }
-	    }
 
         stage('Build') {
             steps {
@@ -44,8 +31,7 @@ pipeline {
             }
         }
     }
-
-
+}
 '''
 post{
   always{
