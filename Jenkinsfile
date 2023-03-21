@@ -25,8 +25,6 @@ pipeline {
 
                 sh "docker build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
                 sh "docker login --username $user --password $pass"
-                sh "snyk container test dariakalugny/polybot-${env.BUILD_NUMBER} --severity-threshold=high"
-                sh "docker push dariakalugny/polybot-${env.BUILD_NUMBER}"
                 }
             }
        stage('snyk test') {
