@@ -50,11 +50,15 @@ pipeline {
                 }
             }
         }
-    }
+
+       post{
+            always{
+                sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
+           }
+       }
 
 
-post{
-  always{
-      sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
-   }
- }
+  }
+
+
+
