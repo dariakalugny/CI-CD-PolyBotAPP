@@ -26,6 +26,7 @@ pipeline {
                 sh "docker build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
                 sh "docker login --username $user --password $pass"
                 }
+              }
             }
        stage('snyk test') {
             steps {
