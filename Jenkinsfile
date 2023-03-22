@@ -19,10 +19,10 @@ pipeline {
 
     stages {
         stage('test') {
-            steps {
+            steps
                sh 'pip --version'
 
-                }
+
               }
             }
 
