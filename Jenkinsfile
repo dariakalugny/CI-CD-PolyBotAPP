@@ -31,13 +31,10 @@ pipeline {
 
         stage('Build') {
             steps {
-
-
                 sh "docker build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
-                sh "docker login --username $user --password $pass"
                 }
               }
-            }
+
        stage('snyk test') {
             steps {
                 sh "snyk container test dariakalugny/polybot-${env.BUILD_NUMBER} --severity-threshold=high"
