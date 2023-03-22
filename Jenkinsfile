@@ -23,7 +23,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')]){
 
                 sh "cp ${TELEGRAM_TOKEN} .telegramToken"
-                sh 'pip install -r requirements.txt'
+                sh 'pip3 install -r requirements.txt'
                 sh "python3 -m pytest --junitxml results.xml test/*.py"
                 }
               }
