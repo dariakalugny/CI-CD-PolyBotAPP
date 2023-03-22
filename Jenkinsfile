@@ -18,6 +18,16 @@ pipeline {
     }
 
     stages {
+        stage('test') {
+            steps {
+                withCredentials([file(credentialsId: 'telegramToken', variable: 'FILE')]){
+
+                sh "cp ${telegramToken} .telegramToken"
+                sh "pip3 install -r requirements.txt"
+                sh 'python3 -m pytest --junitxml results.xml test/*.py'
+                }
+              }
+            }
 
         stage('Build') {
             steps {
