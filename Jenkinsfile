@@ -44,9 +44,8 @@ pipeline {
         stage('push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                 sh "docker login --username $user --password $pass"
                 sh "docker push dariakalugny/polybot-${env.BUILD_NUMBER}"
-                sh "docker login --username $user --password $pass"
-
                 }
                }
             }
