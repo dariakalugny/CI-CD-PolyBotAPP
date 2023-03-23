@@ -19,15 +19,27 @@ pipeline {
 
     stages {
         stage('test') {
-            steps {
-                withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')]){
+            parallel{
+               stage('pytest'){
+                   steps{
+                      withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')]){
 
-                sh "cp ${TELEGRAM_TOKEN} .telegramToken"
-                sh 'pip3 install -r requirements.txt'
-                sh "python3 -m pytest --junitxml results.xml test/*.py"
-                }
-              }
+                       sh "cp ${TELEGRAM_TOKEN} .telegramToken"
+                       sh 'pip3 install -r requirements.txt'
+                       sh "python3 -m pytest --junitxml results.xml test/*.py"
+
+                   }
+               }
+
+                stage('pylint'){
+                   steps{
+                      script{
+                         sh "python3 -m pytint *.py || true"
+                      }
+                   }
+               }
             }
+        }
 
         stage('Build') {
             steps {
@@ -47,7 +59,7 @@ pipeline {
                  sh "docker login --username $user --password $pass"
                 sh "docker push dariakalugny/polybot-${env.BUILD_NUMBER}"
                 }
-               }
+
             }
         }
 
