@@ -22,8 +22,8 @@ pipeline {
             parallel{
                stage('pytest'){
                    steps{
-                      withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')]){
-
+                      withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')])
+                      {
                        sh "cp ${TELEGRAM_TOKEN} .telegramToken"
                        sh 'pip3 install -r requirements.txt'
                        sh "python3 -m pytest --junitxml results.xml test/*.py"
@@ -53,13 +53,14 @@ pipeline {
 
                 }
             }
+
         stage('push') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')])
+                {
                  sh "docker login --username $user --password $pass"
                 sh "docker push dariakalugny/polybot-${env.BUILD_NUMBER}"
                 }
-
             }
         }
 
@@ -69,4 +70,5 @@ pipeline {
                 sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
            }
        }
-}
+    }
+  }
