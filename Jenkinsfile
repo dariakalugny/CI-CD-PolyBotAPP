@@ -69,3 +69,4 @@ pipeline {
                 sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
            }
        }
+}
