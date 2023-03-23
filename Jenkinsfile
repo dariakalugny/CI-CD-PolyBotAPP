@@ -67,10 +67,7 @@ pipeline {
        post{
             always{
                junit allowEmptyResults: true, testResults: 'results.xml'
-                sh 'cat pylint.log'
                 sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
-
-
             }
 
        }
