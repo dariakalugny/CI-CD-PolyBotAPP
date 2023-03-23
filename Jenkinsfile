@@ -70,10 +70,10 @@ pipeline {
                 sh 'cat pylint.log'
                 sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
                    if (result.equals("SUCCESS")){
-                   echo "The job was Successful"
+                  massage: "The job was Successful"
                    }
                    else{
-                    echo "The job Fails"
+                    massage: "The job Fails"
                    }
 
             }
