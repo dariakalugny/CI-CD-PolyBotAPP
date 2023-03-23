@@ -69,12 +69,7 @@ pipeline {
                junit allowEmptyResults: true, testResults: 'results.xml'
                 sh 'cat pylint.log'
                 sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
-                   if (result.equals("SUCCESS")){
-                  massage: "The job was Successful"
-                   }
-                   else{
-                    massage: "The job Fails"
-                   }
+
 
             }
 
