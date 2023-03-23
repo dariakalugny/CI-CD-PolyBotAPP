@@ -34,9 +34,7 @@ pipeline {
                 stage('pylint'){
                    steps{
                       script{
-                        sh 'python3 -m pylint -f parseable --reports=no *.py > pylint.log'
-
-                         'sh "python3 -m pytint *.py || true"'
+                         sh "python3 -m pytint *.py || true"
                       }
                    }
                }
@@ -70,6 +68,12 @@ pipeline {
             always{
                junit allowEmptyResults: true, testResults: 'results.xml'
                 sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
+                sh 'cat pylint.log'
+                    recordIssues (
+                              enabledForFailure: true,
+                              aggregatingResults: true,
+                              tools: [pyLint(name: 'Pylint', pattern: '**/pylint.log')
+                 )
             }
 
        }
