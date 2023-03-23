@@ -68,12 +68,6 @@ pipeline {
             always{
                junit allowEmptyResults: true, testResults: 'results.xml'
                 sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
-                sh 'cat pylint.log'
-                    recordIssues (
-                              enabledForFailure: true,
-                              aggregatingResults: true,
-                              tools: [pyLint(name: 'Pylint', pattern: '**/pylint.log')
-                 )
             }
 
        }
