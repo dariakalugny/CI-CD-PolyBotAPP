@@ -1,3 +1,5 @@
+@Library('shared-lib')
+
 pipeline {
 
   options {
