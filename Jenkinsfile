@@ -1,4 +1,5 @@
-@Library('shared-lib') _
+'''@Library('shared-lib') _'''
+library 'shared-lib@main'
 
 pipeline {
 
