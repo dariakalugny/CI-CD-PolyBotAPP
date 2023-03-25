@@ -1,4 +1,4 @@
-@Library('shared-lib')
+@Library('shared-lib') _
 
 pipeline {
 
@@ -35,9 +35,11 @@ pipeline {
 
                 stage('pylint'){
                    steps{
-                      script{
-                         sh "python3 -m pytint *.py || true"
-                      }
+                          script {
+                            logs.info 'Starting'
+                            logs.warning 'Nothing to do!'
+                            sh "python3 -m pylint *.py || true"
+                        }
                    }
                }
             }
