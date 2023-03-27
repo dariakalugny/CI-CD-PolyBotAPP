@@ -52,10 +52,12 @@ pipeline {
         }
 
         stage('Build') {
-            steps {
+           steps {
+             catchError(message:'build ERROR'){
                 sh "docker build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
-              }
-            }
+             }
+           }
+        }
 
        stage('snyk test') {
             steps {
