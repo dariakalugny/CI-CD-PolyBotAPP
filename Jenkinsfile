@@ -1,10 +1,11 @@
-'''@Library('shared-lib') _'''
+//@Library('shared-lib') _
 library 'shared-lib@main'
 
 pipeline {
 
   options {
-    buildDiscarder(logRotator(daysToKeepStr: '30'))
+
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '10', daysToKeepStr: '', numToKeepStr: '10')
     disableConcurrentBuilds()
     timestamps()
     timeout(time: 10, unit: 'MINUTES')
@@ -78,3 +79,5 @@ pipeline {
        }
 
   }
+
+ 
