@@ -26,7 +26,7 @@ pipeline {
             parallel{
                stage('pytest'){
                    steps{
-                    catchError(massage:'pytest ERROR'){
+                    catchError(message:'pytest ERROR'){
                       withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')])
                       {
                        sh "cp ${TELEGRAM_TOKEN} .telegramToken"
