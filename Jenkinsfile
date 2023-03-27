@@ -39,11 +39,13 @@ pipeline {
 
                 stage('pylint'){
                    steps{
+                   catchError(message:'pylint ERROR'){
                           script {
                             logs.info 'Starting'
                             logs.warning 'Nothing to do!'
                             sh "python3 -m pylint *.py || true"
                         }
+                      }
                    }
                }
             }
@@ -57,18 +59,22 @@ pipeline {
 
        stage('snyk test') {
             steps {
+               catchError(message:'snyk ERROR')
+               {
                 sh "snyk container test dariakalugny/polybot-${env.BUILD_NUMBER} --severity-threshold=high"
-
-                }
-            }
+               }
+             }
+           }
 
         stage('push') {
             steps {
+              catchError(message:'push ERROR'){
                 withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')])
                 {
                  sh "docker login --username $user --password $pass"
                 sh "docker push dariakalugny/polybot-${env.BUILD_NUMBER}"
                 }
+              }
             }
         }
     }
