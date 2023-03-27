@@ -50,7 +50,7 @@ pipeline {
         stage('Build') {
             steps {
                 catcherror (massage:'build error'){
-                sh "docke build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
+                sh "docker build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
                 }
               }
             }
