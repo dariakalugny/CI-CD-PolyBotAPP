@@ -26,7 +26,7 @@ pipeline {
             parallel{
                stage('pytest'){
                    steps{
-                    catchError(message:'pytest ERROR'){
+                    catchError(message:'pytest ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE'){
                       withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')])
                       {
                        sh "cp ${TELEGRAM_TOKEN} .telegramToken"
@@ -39,7 +39,7 @@ pipeline {
 
                 stage('pylint'){
                    steps{
-                   catchError(message:'pylint ERROR'){
+                   catchError(message:'pylint ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE'){
                           script {
                             logs.info 'Starting'
                             logs.warning 'Nothing to do!'
@@ -53,7 +53,7 @@ pipeline {
 
         stage('Build') {
            steps {
-             catchError(message:'build ERROR'){
+             catchError(message:'build ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE'){
                 sh "docker build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
              }
            }
@@ -61,7 +61,7 @@ pipeline {
 
        stage('snyk test') {
             steps {
-               catchError(message:'snyk ERROR')
+               catchError(message:'snyk ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE')
                {
                 sh "snyk container test dariakalugny/polybot-${env.BUILD_NUMBER} --severity-threshold=high"
                }
@@ -70,7 +70,7 @@ pipeline {
 
         stage('push') {
             steps {
-              catchError(message:'push ERROR'){
+              catchError(message:'push ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE'){
                 withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')])
                 {
                  sh "docker login --username $user --password $pass"
