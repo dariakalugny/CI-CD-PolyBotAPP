@@ -53,29 +53,22 @@ pipeline {
 
         stage('Build') {
            steps {
-             catchError(message:'build ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE'){
                 sh "docker build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
-             }
            }
         }
 
        stage('snyk test') {
             steps {
-               catchError(message:'snyk ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE')
-               {
                 sh "snyk container test dariakalugny/polybot-${env.BUILD_NUMBER} --severity-threshold=high"
-               }
              }
            }
 
         stage('push') {
             steps {
-              catchError(message:'push ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE'){
                 withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')])
                 {
                  sh "docker login --username $user --password $pass"
                 sh "docker push dariakalugny/polybot-${env.BUILD_NUMBER}"
-                }
               }
             }
         }
