@@ -11,7 +11,6 @@ pipeline {
             steps {
                 echo "testing"
             }
-        stage('')
         }
     }
 }
