@@ -1,6 +1,11 @@
 //@Library('shared-lib') _
 library 'shared-lib@main'
 
+generic-build(microservice: "polybot", token:"telegramToken")
+
+
+
+'''
 pipeline {
 
   options {
@@ -83,4 +88,4 @@ pipeline {
 
   }
 
- 
+ '''
