@@ -1,7 +1,11 @@
+//@Library('shared-lib') _
+library 'shared-lib@main'
+
 pipeline {
 
   options {
-    buildDiscarder(logRotator(daysToKeepStr: '30'))
+
+    buildDiscarder logRotator( artifactNumToKeepStr: '10', numToKeepStr: '10')
     disableConcurrentBuilds()
     timestamps()
     timeout(time: 10, unit: 'MINUTES')
@@ -19,17 +23,63 @@ pipeline {
     }
 
     stages {
+        stage('test') {
+            parallel{
+               stage('pytest'){
+                   steps{
+                    catchError(message:'pytest ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE'){
+                      withCredentials([file(credentialsId: 'telegramToken', variable: 'TELEGRAM_TOKEN')])
+                      {
+                       sh "cp ${TELEGRAM_TOKEN} .telegramToken"
+                       sh 'pip3 install -r requirements.txt'
+                       sh "python3 -m pytest --junitxml results.xml test/*.py"
+                      }
+                    }
+                  }
+               }
+
+                stage('pylint'){
+                   steps{
+                   catchError(message:'pylint ERROR',buildResult:'UNSTABLE',stageResult:'UNSTABLE'){
+                          script {
+                            logs.info 'Starting'
+                            logs.warning 'Nothing to do!'
+                            sh "python3 -m pylint *.py "
+                        }
+                      }
+                   }
+               }
+            }
+        }
 
         stage('Build') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')]) {
-
+           steps {
                 sh "docker build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
-                sh "docker login --username $user --password $pass"
+           }
+        }
+
+       stage('snyk test') {
+            steps {
                 sh "snyk container test dariakalugny/polybot-${env.BUILD_NUMBER} --severity-threshold=high"
+             }
+           }
+
+        stage('push') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')])
+                {
+                 sh "docker login --username $user --password $pass"
                 sh "docker push dariakalugny/polybot-${env.BUILD_NUMBER}"
-                }
+              }
             }
         }
     }
-}
+       post{
+            always{
+               junit allowEmptyResults: true, testResults: 'results.xml'
+                sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
+            }
+
+       }
+
+  }
