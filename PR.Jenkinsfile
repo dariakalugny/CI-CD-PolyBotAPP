@@ -7,6 +7,7 @@ pipeline {
                 echo "testing"
             }
         }
+
         stage('Functional test') {
             steps {
                 echo "testing"
