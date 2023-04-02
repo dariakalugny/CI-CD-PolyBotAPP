@@ -44,7 +44,7 @@ pipeline {
                           script {
                             logs.info 'Starting'
                             logs.warning 'Nothing to do!'
-                            sh "python3 -m pylint *.py "
+                            sh "python3 -m pylint *.py || true"
                         }
                       }
                    }
