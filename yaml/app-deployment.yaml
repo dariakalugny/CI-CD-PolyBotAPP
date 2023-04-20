@@ -15,5 +15,3 @@ spec:
       containers:
       - name: nginx
         image: Dockerfile
-        ports:
-        - containerPort: 80

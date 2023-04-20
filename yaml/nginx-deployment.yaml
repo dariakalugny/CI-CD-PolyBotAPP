@@ -15,5 +15,3 @@ spec:
       containers:
       - name: nginx
         image: nginx.dockerfile
-        ports:
-        - containerPort: 80
