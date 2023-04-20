@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: polybot-image
+        image: polybot-image:latest
