@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: apppolyboy-deployment
 spec:
   selector:
     matchLabels:
@@ -13,5 +13,5 @@ spec:
         app: polybot
     spec:
       containers:
-      - name: nginx
+      - name: polybot
         image: polybot-image:latest
