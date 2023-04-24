@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx-image:latest
+        image: dariakalugny/nginximage:latest
