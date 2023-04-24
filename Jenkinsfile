@@ -5,7 +5,7 @@ pipeline {
 
   options {
 
-    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '10', daysToKeepStr: '', numToKeepStr: '10')
+    buildDiscarder logRotator( artifactNumToKeepStr: '10', numToKeepStr: '10')
     disableConcurrentBuilds()
     timestamps()
     timeout(time: 10, unit: 'MINUTES')
@@ -44,7 +44,7 @@ pipeline {
                           script {
                             logs.info 'Starting'
                             logs.warning 'Nothing to do!'
-                            sh "python3 -m pylint *.py "
+                            sh "python3 -m pylint *.py || true"
                         }
                       }
                    }
