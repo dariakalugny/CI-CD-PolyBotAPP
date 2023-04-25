@@ -77,7 +77,7 @@ pipeline {
        post{
             always{
                junit allowEmptyResults: true, testResults: 'results.xml'
-                sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
+               // sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
             }
 
        }
