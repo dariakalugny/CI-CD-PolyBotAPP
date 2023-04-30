@@ -54,13 +54,13 @@ pipeline {
 
         stage('Build') {
            steps {
-                sh "docker build -t dariakalugny/polybot-${env.BUILD_NUMBER} . "
+                sh "docker build -t dariakalugny/daria-repo-${env.BUILD_NUMBER} . "
            }
         }
 
        stage('snyk test') {
             steps {
-                sh "snyk container test dariakalugny/polybot-${env.BUILD_NUMBER} --severity-threshold=high || true"
+                sh "snyk container test dariakalugny/daria-repo-${env.BUILD_NUMBER} --severity-threshold=high || true"
              }
            }
 
@@ -69,7 +69,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')])
                 {
                  sh "docker login --username $user --password $pass"
-                sh "docker push dariakalugny/polybot-${env.BUILD_NUMBER}"
+                sh "docker push dariakalugny/daria-repo-${env.BUILD_NUMBER}"
               }
             }
         }
@@ -77,7 +77,7 @@ pipeline {
        post{
             always{
                junit allowEmptyResults: true, testResults: 'results.xml'
-               // sh "docker rmi dariakalugny/polybot-${env.BUILD_NUMBER}"
+               // sh "docker rmi dariakalugny/daria-repo-${env.BUILD_NUMBER}"
             }
 
        }
