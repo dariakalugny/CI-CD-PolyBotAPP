@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: polybot
-        image: dariakalugny/polybot3
+        image: dariakalugny/daria-repo:polybot

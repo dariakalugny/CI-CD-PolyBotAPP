@@ -14,4 +14,4 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: dariakalugny/nginximage
+        image: dariakalugny/daria-repo:nginx
