@@ -4,8 +4,9 @@ metadata:
   name: nginx
   namespace: demoapp
 spec:
-  selector:
-    app.kubernetes.io/name: nginx
   ports:
     - protocol: TCP
-      port: 8081
+      port: 80
+      targetPort: 8081
+  selector:
+    app.kubernetes.io/name: nginx
