@@ -3,15 +3,13 @@ kind: Deployment
 metadata:
   name: nginx-deployment
 spec:
-  selector:
-    matchLabels:
-      app: nginx
-  replicas: 1 # tells deployment to run 2 pods matching the template
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: dariakalugny/daria-repo:nginx
+ replicas: 1
+ template:
+   metadata:
+     labels:
+       app: nginx
+   spec:
+     containers:
+       name: nginx
+       image: dariakalugny/daria-repo:nginx
+
