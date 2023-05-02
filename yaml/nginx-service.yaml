@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: nginx
 spec:
-  type:clusterIp
+  type: clusterIp
 ports:
       port: 80
       targetPort: 8081
 selector:
-    server:nginx
+    server: nginx
