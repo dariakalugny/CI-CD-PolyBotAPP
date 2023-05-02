@@ -15,5 +15,3 @@ spec:
       containers:
       - name: nginx
         image: dariakalugny/daria-repo:nginx
-        ports:
-          - containerPort: 8081
