@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: apppolyboy-deployment
+  name: polybot-deployment
 spec:
-  selector:
-    matchLabels:
-      app: polybot
-  replicas: 1 # tells deployment to run 2 pods matching the template
-  template:
-    metadata:
-      labels:
-        app: polybot
-    spec:
-      containers:
-      - name: polybot
-        image: dariakalugny/daria-repo:polybot
+ replicas: 1
+ selector:
+   matchLabels:
+     app: polybot
+     tier: backend
+ template:
+   metadata:
+     labels:
+       app: polybot
+       tier: backend
+   spec:
+     containers:
+       - name: nginx
+         image: dariakalugny/daria-repo:polybot
