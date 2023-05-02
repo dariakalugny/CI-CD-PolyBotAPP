@@ -15,6 +15,6 @@ spec:
        tier: backend
    spec:
      containers:
-       name: nginx
-       image: dariakalugny/daria-repo:nginx
+       - name: nginx
+         image: dariakalugny/daria-repo:nginx
 
