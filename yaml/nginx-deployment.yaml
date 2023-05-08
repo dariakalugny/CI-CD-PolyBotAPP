@@ -21,6 +21,6 @@ spec:
           httpGet:
             path: /
             port: 8081
-     periodSeconds: 5
-     initialDelaySeconds: 1
+     #periodSeconds: 5
+     #initialDelaySeconds: 1
 
