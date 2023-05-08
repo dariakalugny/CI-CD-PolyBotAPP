@@ -14,6 +14,10 @@ spec:
        app: nginx
        tier: backend
    spec:
+     volumes:
+       - name: nginx-pvc
+         persistentVolumeClaim:
+           claimName: nginx-pvc
      containers:
        - name: nginx
          image: dariakalugny/daria-repo:nginx
