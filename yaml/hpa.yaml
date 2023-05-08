@@ -11,7 +11,7 @@ spec:
   maxReplicas: 5
   targetCPUUtilizationPercentage: 50
 
- ----
+
 
   apiVersion: autoscaling/v1
   kind: HorizontalPodAutoscaler
