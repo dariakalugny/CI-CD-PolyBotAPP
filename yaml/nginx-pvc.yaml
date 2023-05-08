@@ -1,10 +1,10 @@
 apiVersion: v1
-kind: PersistenVolumeXClaim
+kind: PersistentVolume
 metadata:
   name: nginx
 spec:
   accessModes:
-    - ReadWritwOnce
+    - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
