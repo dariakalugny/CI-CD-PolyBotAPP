@@ -18,9 +18,9 @@ spec:
        - name: nginx
          image: dariakalugny/daria-repo:nginx
          livenessProbe:
-           exec:
-             command:
-               -echo
-               -hello world
+          httpGet:
+            path: /
+            port: 8081
+     periodSeconds: 5
      initialDelaySeconds: 1
 
