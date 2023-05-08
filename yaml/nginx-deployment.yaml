@@ -22,7 +22,7 @@ spec:
              command:
                -cat
                -/var/www/html/index.html
-     initialDelaySeconds: 10
-     periodSeconds: 3
+     initialDelaySeconds: 1
+     periodSeconds: 1
 
 
