@@ -20,8 +20,8 @@ spec:
          livenessProbe:
            exec:
              command:
-               -cat
-               -/var/www/html/index.html
+               -echo
+               -hello world
      initialDelaySeconds: 1
      periodSeconds: 1
 
