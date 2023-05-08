@@ -17,4 +17,11 @@ spec:
      containers:
        - name: nginx
          image: dariakalugny/daria-repo:nginx
+         livenessprobe:
+            httpGet:
+             path:
+             port: 8081
+     initialDelaySeconds: 10
+     periodSeconds: 3
+
 
