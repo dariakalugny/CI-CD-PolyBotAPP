@@ -21,11 +21,14 @@ spec:
      containers:
        - name: nginx
          image: dariakalugny/daria-repo:nginx
+         volumeMounts:
+           - mountPath: "/usr/share/nginx/html"
+             name: nginx-pvc
+
          resources:
            limits:
              cpu: "1"
              memory: "100Mi"
-
            requests:
              cpu: "0.5"
              memory: "50Mi"
@@ -37,6 +40,5 @@ spec:
               - /var/www/html/index.html
           initialDelaySeconds: 1
           periodSeconds: 5
-         volumeMounts:
-         - mountPath: "/usr/share/nginx/html"
-           name: nginx-pvc
+
+

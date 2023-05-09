@@ -1,0 +1,5 @@
+replicaCount: 3
+image:
+  repository: dariakalugny/daria-repo
+  tag: poltbot
+  pullPolicy: InfotPresent
