@@ -20,9 +20,9 @@ spec:
            claimName: nginx-pvc
      containers:
        - name: nginx
-         image: dariakalugny/daria-repo:nginx2
+         image: dariakalugny/daria-repo:nginx
          volumeMounts:
-           - mountPath: "/app"
+           - mountPath: /usr/share/nginx/html
              name: nginx-pvc
 
          resources:
