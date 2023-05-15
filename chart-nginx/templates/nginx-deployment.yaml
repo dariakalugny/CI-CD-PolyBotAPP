@@ -20,7 +20,7 @@ spec:
            claimName: nginx-pvc
      containers:
        - name: {{ .Values.name }}
-         image: {{ .Values.image }}
+         image: '{{ .Values.image }}' dariakalugny/daria-repo:nginx
          volumeMounts:
            - mountPath: /usr/share/nginx/html
              name: nginx-pvc
