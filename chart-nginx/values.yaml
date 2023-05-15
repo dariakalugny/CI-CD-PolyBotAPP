@@ -1,4 +1,3 @@
-replicaCount: 3
 image:
   repository: dariakalugny/daria-repo
   tag: nginx
