@@ -27,7 +27,7 @@ spec:
 
          resources:
            limits:
-             cpu: "1"
+             cpu: {{ .Values.resources.limits.cpu }}
              memory: "100Mi"
            requests:
              cpu: "0.5"
