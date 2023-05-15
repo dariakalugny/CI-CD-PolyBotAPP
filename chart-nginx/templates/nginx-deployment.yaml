@@ -15,15 +15,15 @@ spec:
        tier: backend
    spec:
      volumes:
-       - name: nginx-pvc
+       - name: {{ .Values.volume.name }}
          persistentVolumeClaim:
-           claimName: nginx-pvc
+           claimName: {{ .Values.volume.name }}
      containers:
        - name: {{ .Values.name }}
          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
          volumeMounts:
            - mountPath: /usr/share/nginx/html
-             name: nginx-pvc
+             name: {{ .Values.volume.name }}
 
          resources:
            limits:
