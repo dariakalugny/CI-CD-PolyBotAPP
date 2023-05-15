@@ -22,7 +22,7 @@ spec:
        - name: {{ .Values.name }}
          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
          volumeMounts:
-           - mountPath: /usr/share/nginx/html
+           - mountPath: /home/ec2-user/PolyBot/pvc-polybot
              name: {{ .Values.volume.name }}
 
          resources:
