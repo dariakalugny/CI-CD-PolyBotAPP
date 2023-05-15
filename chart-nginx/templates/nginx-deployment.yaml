@@ -6,12 +6,12 @@ spec:
  replicas: 1
  selector:
    matchLabels:
-     app: nginx
+     app: {{ .Values.name }}
      tier: backend
  template:
    metadata:
      labels:
-       app: nginx
+       app: {{ .Values.name }}
        tier: backend
    spec:
      volumes:
