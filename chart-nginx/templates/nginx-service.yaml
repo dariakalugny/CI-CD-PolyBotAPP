@@ -8,5 +8,5 @@ spec:
     tier: backend
   ports:
     - protocol: TCP
-      port: 8081
+      port: {{ .Values.service.port }}
       targetPort: 8081

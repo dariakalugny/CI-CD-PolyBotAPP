@@ -4,3 +4,6 @@ image:
   tag: nginx
   pullPolicy: InfotPresent
 name: nginx
+service:
+  port: 8081
+  targetPort: 8081
