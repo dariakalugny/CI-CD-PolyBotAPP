@@ -2,5 +2,5 @@ replicaCount: 3
 image:
   repository: dariakalugny/daria-repo
   tag: nginx
-  pullPolicy: InfotPresent
+
 name: nginx
