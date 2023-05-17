@@ -24,3 +24,5 @@ livenessProbe:
  initialDelaySeconds: 1
  periodSeconds: 5
 
+#namespace: demoapp
+

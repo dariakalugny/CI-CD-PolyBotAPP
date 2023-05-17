@@ -10,13 +10,30 @@ pipeline {
     timestamps()
     timeout(time: 10, unit: 'MINUTES')
    }
-
+'''
   agent {
     docker {
         image 'jenkins-agent:latest'
         args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
     }
     }
+'''
+
+  agent {
+    kubernetes {
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        spec:
+          containers:
+          - name: jenkins-agent
+            image: jenkins-agent:latest
+            command:
+            - cat
+            tty: true
+        '''
+    }
+  }
 
     environment{
         SNYK_TOKEN = credentials('snyk')
