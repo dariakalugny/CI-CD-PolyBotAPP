@@ -18,7 +18,7 @@ pipeline {
         spec:
           containers:
           - name: jenkins-agent
-            image: dariakalugny/daria-repo:jenkins
+            image: dariakalugny/daria-repo:jenkins2
 
             tty: true
         '''
