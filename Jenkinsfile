@@ -1,6 +1,6 @@
 //@Library('shared-lib') _
 library 'shared-lib@main'
-import hudson.
+import hudson.*;
 
 pipeline {
 
