@@ -12,6 +12,7 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
    }
   agent {
+  kubernetes {
    podTemplate(yaml: '''
     apiVersion: v1
     kind: Pod
@@ -21,6 +22,7 @@ pipeline {
     image: dariakalugny/daria-repo:jenkins2
 
 ''')
+   }
   }
 
     environment{
