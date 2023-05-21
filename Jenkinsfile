@@ -10,7 +10,7 @@ pipeline {
     disableConcurrentBuilds()
     timestamps()
     timeout(time: 10, unit: 'MINUTES')
-   }
+
      agent {
         kubernetes {
             // Specify Kubernetes-related configurations
