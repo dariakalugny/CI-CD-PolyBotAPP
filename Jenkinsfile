@@ -13,16 +13,21 @@ pipeline {
    }
   agent {
     kubernetes {
-        label 'jenkins-eks-pod'
-        podTemplate {
-                // Specify the Docker image for the agent container
-                containers {
-                    container {
-                        name 'jenkins-agent'
-                        image 'dariakalugny/daria-repo:jenkins2'
-                    }
-                }
-        }
+
+      inheritFrom 'jenkins'
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          labels:
+            some-label: jenkins-eks-pod
+        spec:
+          containers:
+          - name: jenkins-agent
+            image: dariakalugny/daria-repo:jenkins2
+
+        '''
+
     }
   }
 
