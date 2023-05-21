@@ -11,12 +11,13 @@ pipeline {
     timestamps()
     timeout(time: 10, unit: 'MINUTES')
    }
-    agent {
-       docker {
+   agent {
+     docker
+      {
         image 'jenkins-agent:latest'
         args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
       }
-    }
+   }
     environment{
         SNYK_TOKEN = credentials('snyk')
     }
