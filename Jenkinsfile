@@ -14,7 +14,7 @@ pipeline {
   agent {
     kubernetes {
 
-
+      inheritFrom 'jenkins'
       yaml '''
         apiVersion: v1
         kind: Pod
