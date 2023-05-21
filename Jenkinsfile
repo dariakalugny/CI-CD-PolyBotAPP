@@ -13,20 +13,8 @@ pipeline {
    }
   agent {
     kubernetes {
-
-      inheritFrom 'jenkins'
-      yaml '''
-        apiVersion: v1
-        kind: Pod
-        metadata:
-          labels:
-            some-label: jenkins-eks-pod
-        spec:
-          containers:
-          - name: jenkins-agent
-            image: dariakalugny/daria-repo:jenkins2
-
-        '''
+     label 'jenkins-eks-pod'
+     yamlFile 'jenkins.yaml'
 
     }
   }
