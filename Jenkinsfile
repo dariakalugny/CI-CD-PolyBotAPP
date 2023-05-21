@@ -11,13 +11,25 @@ pipeline {
     timestamps()
     timeout(time: 10, unit: 'MINUTES')
    }
-  agent {
+    agent {
     kubernetes {
-     label 'jenkins-eks-pod'
-     yamlFile 'jenkins.yaml'
 
+      inheritFrom 'jenkins'
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          labels:
+            some-label: jenkins-eks-pod
+        spec:
+          containers:
+          - name: jenkins-agent
+            image: dariakalugny/daria-repo:jenkins2
+
+        '''
     }
   }
+
 
     environment{
         SNYK_TOKEN = credentials('snyk')
