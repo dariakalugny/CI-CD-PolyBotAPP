@@ -12,17 +12,24 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
    }
   agent {
-  kubernetes {
-   podTemplate(yaml: '''
-    apiVersion: v1
-    kind: Pod
-    spec:
-    containers:
-      - name: jenkins
-    image: dariakalugny/daria-repo:jenkins2
+    kubernetes {
+    withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')])
+                {
+      inheritFrom 'jenkins'
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          labels:
+            some-label: jenkins-eks-pod
+        spec:
+          containers:
+          - name: jenkins-agent
+            image: dariakalugny/daria-repo:jenkins2
 
-''')
-   }
+        '''
+      }
+    }
   }
 
     environment{
