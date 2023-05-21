@@ -10,14 +10,11 @@ pipeline {
     disableConcurrentBuilds()
     timestamps()
     timeout(time: 10, unit: 'MINUTES')
-
-     agent {
-        kubernetes {
-            // Specify Kubernetes-related configurations
-            label 'jenkins-eks-pod' // Optional: Specify the label for the Kubernetes agent
-
-            // Define the pod template for the Kubernetes agent
-            podTemplate {
+   }
+  agent {
+    kubernetes {
+        label 'jenkins-eks-pod'
+        podTemplate {
                 // Specify the Docker image for the agent container
                 containers {
                     container {
@@ -25,9 +22,9 @@ pipeline {
                         image 'dariakalugny/daria-repo:jenkins2'
                     }
                 }
-            }
         }
     }
+  }
 
     environment{
         SNYK_TOKEN = credentials('snyk')
@@ -94,4 +91,3 @@ pipeline {
        }
 
   }
- }
