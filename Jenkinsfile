@@ -12,24 +12,11 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
    }
   agent {
-    kubernetes {
-
-      inheritFrom 'jenkins'
-      yaml '''
-        apiVersion: v1
-        kind: Pod
-        metadata:
-          labels:
-            some-label: jenkins-eks-pod
-        spec:
-          containers:
-          - name: jenkins-agent
-            image: dariakalugny/daria-repo:jenkins2
-
-        '''
+    docker {
+        image 'jenkins-agent:latest'
+        args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
     }
-  }
-
+    }
     environment{
         SNYK_TOKEN = credentials('snyk')
     }
