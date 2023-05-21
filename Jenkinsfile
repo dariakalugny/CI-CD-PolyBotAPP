@@ -12,13 +12,18 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
    }
   agent {
-  podTemplate(containers: [
-  containerTemplate(
-      name: 'jenkins-agent',
-      image: 'dariakalugny/daria-repo:jenkins2',
-
-      )
-  ]
+    kubernetes {
+        label 'jenkins-eks-pod'
+        podTemplate {
+                // Specify the Docker image for the agent container
+                containers {
+                    container {
+                        name 'jenkins-agent'
+                        image 'dariakalugny/daria-repo:jenkins2'
+                    }
+                }
+        }
+    }
   }
 
     environment{
