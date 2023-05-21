@@ -12,7 +12,7 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
    }
     agent {
-      docker {
+       docker {
         image 'jenkins-agent:latest'
         args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
       }
