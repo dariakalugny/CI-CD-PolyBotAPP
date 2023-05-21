@@ -13,8 +13,7 @@ pipeline {
    }
   agent {
     kubernetes {
-    withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')])
-                {
+
       inheritFrom 'jenkins'
       yaml '''
         apiVersion: v1
@@ -28,7 +27,6 @@ pipeline {
             image: dariakalugny/daria-repo:jenkins2
 
         '''
-      }
     }
   }
 
