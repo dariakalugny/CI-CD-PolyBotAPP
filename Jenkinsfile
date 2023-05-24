@@ -24,7 +24,7 @@ pipeline {
         spec:
           containers:
           - name: jenkins-agent
-            image: dariakalugny/daria-repo:jenkins3
+            image: dariakalugny/daria-repo:jenkins2
 
         '''
     }
