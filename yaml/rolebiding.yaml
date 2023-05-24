@@ -8,7 +8,6 @@ subjects:
   name: jenkins
   namespace: jenkins
 roleRef:
-
-  kind: cluster-role
+  kind: ClusterRole
   name: cluster-role
   apiGroup: rbac.authorization.k8s.io
