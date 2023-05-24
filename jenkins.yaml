@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Pod
 spec:
- containers:
+  serviceAccountName: cluster-role
+  containers:
    - name: jenkins-agent
      image: dariakalugny/daria-repo:jenkins2
