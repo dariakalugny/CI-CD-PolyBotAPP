@@ -1,18 +1,11 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
+  namespace: jenkins
   labels:
     app.kubernetes.io/name: dashboard-cluster-role
   name: cluster-role
 rules:
-- apiGroups:
-  - ""
-  - extentions
+- apiGroups: [""]
   resources: ["*"]
-  verbs:
-  - get
-  - list
-  - watch
-  - create
-  - update
-  - patch
+  verbs: ["get", "list", "watch", "create", "update", "patch"]
