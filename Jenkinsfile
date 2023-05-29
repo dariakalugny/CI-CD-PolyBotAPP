@@ -23,7 +23,6 @@ pipeline {
             some-label: jenkins-eks-pod
         spec:
           serviceAccountName: jenkins-admin
-          automountServiceAccountToken: false
           containers:
           - name: jenkins-agent
             image: dariakalugny/daria-repo:jenkins2
