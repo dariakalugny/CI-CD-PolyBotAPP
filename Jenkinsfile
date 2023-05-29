@@ -23,7 +23,7 @@ pipeline {
           serviceAccountName: jenkins-admin
           containers:
           - name: jenkins-agent
-            image: dariakalugny/daria-repo:jenkins3
+            image: dariakalugny/daria-repo:jenkins2
 
         '''
     }
