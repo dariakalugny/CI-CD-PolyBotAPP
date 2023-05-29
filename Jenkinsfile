@@ -1,6 +1,6 @@
 //@Library('shared-lib') _
 library 'shared-lib@main'
-
+import hudson.*;
 
 pipeline {
 
@@ -13,6 +13,8 @@ pipeline {
    }
     agent {
     kubernetes {
+
+      inheritFrom 'jenkins'
       yaml '''
         apiVersion: v1
         kind: Pod
