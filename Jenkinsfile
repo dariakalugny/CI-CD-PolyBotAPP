@@ -13,8 +13,6 @@ pipeline {
    }
     agent {
     kubernetes {
-
-
       yaml '''
         apiVersion: v1
         kind: Pod
@@ -25,7 +23,7 @@ pipeline {
           serviceAccountName: jenkins-admin
           containers:
           - name: jenkins-agent
-            image: dariakalugny/daria-repo:jenkins
+            image: dariakalugny/daria-repo:jenkins3
 
         '''
     }
