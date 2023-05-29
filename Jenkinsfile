@@ -15,6 +15,7 @@ pipeline {
     kubernetes {
 
       inheritFrom 'jenkins'
+      defaultContainer 'jnlp'
       yaml '''
         apiVersion: v1
         kind: Pod
