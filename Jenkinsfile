@@ -15,7 +15,6 @@ pipeline {
     kubernetes {
 
       inheritFrom 'jenkins'
-      defaultContainer 'jnlp'
       yaml '''
         apiVersion: v1
         kind: Pod
@@ -24,10 +23,10 @@ pipeline {
             some-label: jenkins-eks-pod
         spec:
           serviceAccountName: jenkins-admin
-          automountServiceAccountToken: false
           containers:
           - name: jenkins-agent
             image: dariakalugny/daria-repo:jenkins2
+            imagePullPolicy: Always
 
         '''
     }
