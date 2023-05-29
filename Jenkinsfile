@@ -27,6 +27,8 @@ pipeline {
           - name: jenkins-agent
             image: dariakalugny/daria-repo:jenkins4
             imagePullPolicy: Always
+            tty: true
+
 
         '''
     }
