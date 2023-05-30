@@ -9,7 +9,7 @@ RUN mkdir /snyk && cd /snyk \
     && curl https://static.snyk.io/cli/v1.666.0/snyk-linux -o snyk \
     && chmod +x ./snyk
 
-FROM jenkins/jnlp-agent-python
+#FROM jenkins/jnlp-agent-python
 FROM jenkins/agent
 COPY --from=docker /usr/local/bin/docker /usr/local/bin/
 COPY --from=installer /usr/local/aws-cli/ /usr/local/aws-cli/
