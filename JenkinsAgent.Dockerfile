@@ -19,9 +19,8 @@ COPY --from=installer /aws-cli-bin/ /usr/local/bin/
 COPY --from=installer /snyk/ /usr/local/bin/
 COPY --from=installer /snyk/ /usr/bin/
 WORKDIR /app
-
-
 RUN apt-get update && apt-get install -y python3 python3-pip
-USER jenkins
 COPY . /app/
 USER root
+
+USER jenkins
