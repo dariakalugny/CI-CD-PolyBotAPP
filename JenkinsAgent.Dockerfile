@@ -7,7 +7,7 @@ RUN yum update -y \
 
 RUN mkdir /snyk && cd /snyk \
     && curl https://static.snyk.io/cli/v1.666.0/snyk-linux -o snyk \
-    && chmod +x ./snyk \
+    && chmod +x ./snyk
 
 WORKDIR /app
 
