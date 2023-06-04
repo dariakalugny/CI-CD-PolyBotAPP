@@ -20,7 +20,8 @@ COPY --from=installer /snyk/ /usr/local/bin/
 COPY --from=installer /snyk/ /usr/bin/
 WORKDIR /app
 
-COPY . /app/
-USER root
+
 RUN apt-get update && apt-get install -y python3 python3-pip
 USER jenkins
+COPY . /app/
+USER root
