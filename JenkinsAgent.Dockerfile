@@ -9,9 +9,7 @@ RUN mkdir /snyk && cd /snyk \
     && curl https://static.snyk.io/cli/v1.666.0/snyk-linux -o snyk \
     && chmod +x ./snyk \
 
-WORKDIR /app
 
-COPY . /app/
 
 #FROM jenkins/jnlp-agent-python
 FROM jenkins/agent
@@ -23,3 +21,7 @@ COPY --from=installer /snyk/ /usr/bin/
 USER root
 RUN apt-get update && apt-get install -y python3 python3-pip
 USER jenkins
+
+WORKDIR /app
+
+COPY . /app/
