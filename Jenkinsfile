@@ -27,8 +27,14 @@ pipeline {
           - name: jenkins-agent
             image: dariakalugny/daria-repo:jenkins4
             imagePullPolicy: Always
+            volumeMounts:
+             - name: jenkinsagent-pvc
+               mountPath: /var/run/docker.sock
             tty: true
-
+         volumes:
+          - name: jenkinsagent-pvc
+            hostPath:
+             path: /var/run/docker.sock
 
 
         '''
@@ -73,7 +79,7 @@ pipeline {
         stage('Build') {
            steps {
               ///  sh "docker buildx create mycontext1 "
-               /// args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+                args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
                 sh "docker build -f /home/jenkins/agent/workspace/jenkins-k8s/Dockerfile -t dariakalugny/daria-repo-${env.BUILD_NUMBER} . "
            }
         }
