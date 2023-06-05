@@ -31,10 +31,10 @@ pipeline {
              - name: jenkinsagent-pvc
                mountPath: /var/run/docker.sock
             tty: true
-         volumes:
+          volumes:
           - name: jenkinsagent-pvc
             hostPath:
-             path: /var/run/docker.sock
+              path: /var/run/docker.sock
 
 
         '''
