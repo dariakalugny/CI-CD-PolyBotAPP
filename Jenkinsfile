@@ -71,7 +71,7 @@ pipeline {
 
         stage('Build') {
            steps {
-                "docker build -f Dockerfile -t dariakalugny/daria-repo-${env.BUILD_NUMBER}  . "
+                sh "docker build -f Dockerfile -t dariakalugny/daria-repo-${env.BUILD_NUMBER} . "
            }
         }
 
