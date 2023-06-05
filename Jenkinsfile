@@ -80,7 +80,9 @@ pipeline {
            steps {
               ///  sh "docker buildx create mycontext1 "
                /// args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
-                sh "chown jenkins /var/run/docker.sock"
+              ///  sh "chown jenkins /var/run/docker.sock"
+                sh "groupadd docker"
+                sh "usermod -aG docker jenkins"
                 sh "docker build -f /home/jenkins/agent/workspace/jenkins-k8s/Dockerfile -t dariakalugny/daria-repo-${env.BUILD_NUMBER} . "
            }
         }
