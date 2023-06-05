@@ -77,7 +77,7 @@ pipeline {
                /// args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
               ///  sh "chown jenkins /var/run/docker.sock"
                /// sh "sudo groupadd docker"
-                sh "chmod a+rx /var/run/docker.sock"
+                sh "chmod a+rx /run/docker.sock"
                 sh "docker build -f /home/jenkins/agent/workspace/jenkins-k8s/Dockerfile -t dariakalugny/daria-repo-${env.BUILD_NUMBER} . "
            }
         }
