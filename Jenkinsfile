@@ -27,14 +27,8 @@ pipeline {
           - name: jenkins-agent
             image: dariakalugny/daria-repo:jenkins4
             imagePullPolicy: Always
-            volumeMounts:
-             - name: jenkinsagent-pvc
-               mountPath: /var/run/docker.sock
             tty: true
-        volumes:
-        - name: jenkinsagent-pvc
-          hostPath:
-            path: /var/run/docker.sock
+
 
 
         '''
