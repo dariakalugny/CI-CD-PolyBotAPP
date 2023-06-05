@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY . /app/
 
-COPY .telegramToken .telegramToken
+#COPY .telegramToken .telegramToken
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
