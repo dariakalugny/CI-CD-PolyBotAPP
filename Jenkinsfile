@@ -27,9 +27,14 @@ pipeline {
           - name: jenkins-agent
             image: dariakalugny/daria-repo:jenkins4
             imagePullPolicy: Always
-
+            volumeMounts:
+             - name: jenkinsagent-pvc
+               mountPath: /var/run/docker.sock
             tty: true
-
+          volumes:
+          - name: jenkinsagent-pvc
+            hostPath:
+              path: /var/run/docker.sock
 
 
         '''
@@ -77,7 +82,7 @@ pipeline {
                /// args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
               ///  sh "chown jenkins /var/run/docker.sock"
                /// sh "sudo groupadd docker"
-                sh "chmod a+rx /run/docker.sock"
+                sh "chmod a+rx /var/run"
                 sh "docker build -f /home/jenkins/agent/workspace/jenkins-k8s/Dockerfile -t dariakalugny/daria-repo-${env.BUILD_NUMBER} . "
            }
         }
