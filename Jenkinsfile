@@ -28,11 +28,11 @@ pipeline {
             image: dariakalugny/daria-repo:jenkins4
             imagePullPolicy: Always
             volumeMounts:
-             - name: docker
+             - name: daria
                mountPath: /var/run/docker.sock
             tty: true
         volumes:
-        - name: docker
+        - name: daria
           hostPath:
             path: /var/run/docker.sock
 
