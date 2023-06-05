@@ -25,7 +25,7 @@ pipeline {
           serviceAccountName: jenkins-admin
           containers:
           - name: jenkins-agent
-            image: dariakalugny/daria-repo:jenkins4
+            image: dariakalugny/daria-repo:jenkins10
             imagePullPolicy: Always
             tty: true
 
