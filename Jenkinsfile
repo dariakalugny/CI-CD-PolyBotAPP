@@ -36,8 +36,8 @@ pipeline {
             hostPath:
               path: /var/run/docker.sock
          securityContext:
-          allowPrivilegeEscalation: false
-          runAsUser: 0
+           allowPrivilegeEscalation: false
+           runAsUser: 0
 
 
         '''
