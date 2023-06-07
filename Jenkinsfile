@@ -35,6 +35,10 @@ pipeline {
           - name: jenkinsagent-pvc
             hostPath:
               path: /var/run/docker.sock
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
 
 
         '''
@@ -80,7 +84,7 @@ pipeline {
            steps {
                ///sh "chown jenkins /var/run"
                /// sh "sudo groupadd docker"
-                sh "sudo chmod 755 /var/run/docker.sock"
+               /// sh "sudo chmod 755 /var/run/docker.sock"
                 sh "docker build -f /home/jenkins/agent/workspace/jenkins-k8s/Dockerfile -t dariakalugny/daria-repo-${env.BUILD_NUMBER} . "
            }
         }
