@@ -37,8 +37,8 @@ pipeline {
               path: /var/run/docker.sock
          securityContext:
            runAsUser: 1000
-           runAsGroup: 1000
-           fsGroup: 1000
+            runAsGroup: 1000
+            fsGroup: 1000
 
         '''
     }
@@ -81,6 +81,9 @@ pipeline {
 
         stage('Build') {
            steps {
+               ///sh "chown jenkins /var/run"
+               /// sh "sudo groupadd docker"
+               /// sh " chmod 755 /var/run/docker.sock"
                 sh "docker build -f /home/jenkins/agent/workspace/jenkins-k8s/Dockerfile -t dariakalugny/daria-repo-${env.BUILD_NUMBER} . "
            }
         }
