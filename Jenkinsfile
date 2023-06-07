@@ -15,6 +15,7 @@ pipeline {
     kubernetes {
 
       inheritFrom 'jenkins'
+      defaultContainer 'jenkins-agent'
       yaml '''
         apiVersion: v1
         kind: Pod
