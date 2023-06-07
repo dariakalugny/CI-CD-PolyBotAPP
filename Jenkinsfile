@@ -35,9 +35,11 @@ pipeline {
           - name: jenkinsagent-pvc
             hostPath:
               path: /var/run/docker.sock
-         securityContext:
-           allowPrivilegeEscalation: false
-           runAsUser: 0
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 0
+
+
 
 
         '''
