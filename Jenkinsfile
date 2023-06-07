@@ -37,8 +37,8 @@ pipeline {
               path: /var/run/docker.sock
          securityContext:
            runAsUser: 1000
-           runAsGroup: 3000
-           fsGroup: 2000
+           runAsGroup: 1000
+           fsGroup: 1000
 
         '''
     }
