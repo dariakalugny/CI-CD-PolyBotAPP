@@ -13,38 +13,7 @@ pipeline {
    }
 
   agent {label 'ec2-fleet'}
-"""
-    agent {
-    kubernetes {
 
-      defaultContainer 'jenkins-agent'
-      yaml '''
-        apiVersion: v1
-        kind: Pod
-        metadata:
-          labels:
-            some-label: jenkins-eks-pod
-        spec:
-          serviceAccountName: jenkins-admin
-          containers:
-          - name: jenkins-agent
-            image: dariakalugny/daria-repo:jenkins4
-            imagePullPolicy: Always
-            volumeMounts:
-             - name: jenkinsagent-pvc
-               mountPath: /var/run/docker.sock
-            tty: true
-          volumes:
-          - name: jenkinsagent-pvc
-            hostPath:
-              path: /var/run/docker.sock
-          securityContext:
-            allowPrivilegeEscalation: false
-            runAsUser: 0
-        '''
-    }
-  }
-"""
 
     environment{
         SNYK_TOKEN = credentials('snyk')
