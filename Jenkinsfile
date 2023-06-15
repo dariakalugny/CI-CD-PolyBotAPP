@@ -12,7 +12,8 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
    }
 
-
+  agent {label 'ec2-fleet'}
+"""
     agent {
     kubernetes {
 
@@ -43,7 +44,7 @@ pipeline {
         '''
     }
   }
-
+"""
 
     environment{
         SNYK_TOKEN = credentials('snyk')
