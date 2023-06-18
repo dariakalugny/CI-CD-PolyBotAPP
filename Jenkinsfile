@@ -12,7 +12,9 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
    }
 
-  agent { label 'ec2-fleet'}
+  agent { label 'ec2-fleet'
+   args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+  }
 
 
     environment{
