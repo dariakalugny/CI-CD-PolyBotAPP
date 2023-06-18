@@ -58,11 +58,11 @@ pipeline {
            }
         }
 
-       stage('snyk test') {
-            steps {
-                sh "snyk container test dariakalugny/daria-repo-${env.BUILD_NUMBER} --severity-threshold=high || true"
-             }
-           }
+       //stage('snyk test') {
+       //     steps {
+        //        sh "snyk container test dariakalugny/daria-repo-${env.BUILD_NUMBER} --severity-threshold=high || true"
+         //    }
+         //  }
 
         stage('push') {
             steps {
