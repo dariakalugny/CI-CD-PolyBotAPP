@@ -12,7 +12,7 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
    }
 
-  agent {label 'ec2-fleet'}
+  agent { label 'ec2-fleet'}
 
 
     environment{
