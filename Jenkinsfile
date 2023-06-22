@@ -51,7 +51,7 @@ pipeline {
 
         stage('Build') {
            steps {
-                sh "docker build -f Dockerfile -t dariakalugny/daria-repo-${env.BUILD_NUMBER} . "
+                sh "docker build -f Dockerfile -t 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo-${env.BUILD_NUMBER}:polybot . "
            }
         }
 
@@ -63,10 +63,11 @@ pipeline {
 
         stage('push') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dariakalugny-dockerhub', passwordVariable: 'pass', usernameVariable: 'user')])
+               docker.withRegistry('https://019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo', 'ecr:eu-west-1:AWS-Credentials')
                 {
-                 sh "docker login --username $user --password $pass"
-                sh "docker push dariakalugny/daria-repo-${env.BUILD_NUMBER}"
+                 //sh "docker login --username $user --password $pass"
+                //sh "docker push dariakalugny/daria-repo-${env.BUILD_NUMBER}"
+                sh "docker push 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo-${env.BUILD_NUMBER}:polybot"
               }
             }
         }
@@ -74,7 +75,7 @@ pipeline {
        post{
             always{
                junit allowEmptyResults: true, testResults: 'results.xml'
-               // sh "docker rmi dariakalugny/daria-repo-${env.BUILD_NUMBER}"
+               sh "docker rmi dariakalugny/daria-repo-${env.BUILD_NUMBER}"
             }
 
        }
