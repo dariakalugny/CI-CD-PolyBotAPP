@@ -1,0 +1,23 @@
+serviceaccount:
+  name: jenkins-admin
+  namespace: jenkins
+
+RoleBinding:
+  name: jenkins-role-binding
+  namespace: jenkins
+  subjects:
+    name: jenkins-admin
+
+role:
+  name: jenkins
+  namespace: jenkins
+
+PersistentVolumeClaim:
+  metadata:
+    name: jenkinsagent-pvc
+  spec:
+    accessModes:
+      - ReadWriteOnce
+    resources:
+      requests:
+        storage: 1Gi
