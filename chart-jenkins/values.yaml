@@ -1,16 +1,16 @@
 serviceaccount:
   name: jenkins-admin
-  namespace: jenkins
+  namespace: daria-jenkins
 
 RoleBinding:
   name: jenkins-role-binding
-  namespace: jenkins
+  namespace: daria-jenkins
   subjects:
     name: jenkins-admin
 
 role:
   name: jenkins
-  namespace: jenkins
+  namespace: daria-jenkins
 
 PersistentVolumeClaim:
   metadata:
