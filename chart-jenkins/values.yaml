@@ -1,11 +1,15 @@
+service:
+ name-service: jenkins-admin
 
-name-service: jenkins-admin
+role:
+  name-role: jenkins
 
-name-role: jenkins
+secret:
+ name-secret: mysecretname
+
+pvc:
+ name-pvc: jenkinsagent-pvc
 
 
-name-secret: mysecretname
-
-name-pvc: jenkinsagent-pvc
-
-namespace: daria-jenkins
+namespace:
+  name: daria-jenkins
