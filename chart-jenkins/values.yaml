@@ -1,8 +1,7 @@
-serviceaacount:
-  name-service: jenkins-admin
+
+name-service: jenkins-admin
 
 name-role: jenkins
-
 
 
 name-secret: mysecretname
