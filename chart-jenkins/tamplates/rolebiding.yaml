@@ -2,12 +2,12 @@
   kind: RoleBinding
   metadata:
     name: {{ .Values.RoleBinding.name }}
-    namespace: {{ .Values.RoleBinding.namespace }}
+    namespace: {{ .Values.name.namespace }}
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: Role
     name: jenkins
   subjects:
     - kind: ServiceAccount
-      name: {{ .Values.subjects.namespace }}
+      name: {{ .Values.name.namespace }}
       namespace: {{ .Values.RoleBinding.name }}

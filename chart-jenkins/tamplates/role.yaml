@@ -2,7 +2,7 @@
   kind: Role
   metadata:
     name: {{ .Values.role.name }}
-    namespace: {{ .Values.role.namespace }}
+    namespace: {{ .Values.name.namespace }}
     labels:
       "app.kubernetes.io/name": 'jenkins'
   rules:

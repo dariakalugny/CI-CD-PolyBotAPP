@@ -1,23 +1,19 @@
+name:
+  namespace: daria-jenkins
 serviceaccount:
   name: jenkins-admin
-  namespace: daria-jenkins
+
 
 RoleBinding:
   name: jenkins-role-binding
-  namespace: daria-jenkins
   subjects:
     name: jenkins-admin
 
 role:
   name: jenkins
-  namespace: daria-jenkins
 
 PersistentVolumeClaim:
-  metadata:
     name: jenkinsagent-pvc
-  spec:
     accessModes:
       - ReadWriteOnce
-    resources:
-      requests:
-        storage: 1Gi
+    storage: 1Gi
