@@ -2,7 +2,7 @@
   kind: RoleBinding
   metadata:
     name: jenkins-role-binding
-    namespace: jenkins
+    namespace: daria-jenkins
   roleRef:
     apiGroup: rbac.authorization.k8s.io
     kind: Role
@@ -10,4 +10,4 @@
   subjects:
     - kind: ServiceAccount
       name: jenkins-admin
-      namespace: jenkins
+      namespace: daria-jenkins

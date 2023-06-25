@@ -2,7 +2,7 @@
   kind: Role
   metadata:
     name: jenkins
-    namespace: jenkins
+    namespace: daria-jenkins
     labels:
       "app.kubernetes.io/name": 'jenkins'
   rules:
