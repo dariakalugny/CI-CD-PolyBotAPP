@@ -14,7 +14,7 @@ pipeline {
     agent {
     kubernetes {
 
-      defaultContainer 'jenkins-agent'
+      //defaultContainer 'jenkins-agent'
       yaml '''
         apiVersion: v1
         kind: Pod
