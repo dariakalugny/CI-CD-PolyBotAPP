@@ -83,7 +83,7 @@ pipeline {
 
         stage('Build') {
            steps {
-                sh "docker build -f /home/ec2-user/PolyBot/Dockerfile -t 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo-${env.BUILD_NUMBER}:polybot . "
+                sh "docker build -f /home/ec2-user/PolyBot/Dockerfile -t 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo-${env.BUILD_NUMBER} . "
            }
         }
 
