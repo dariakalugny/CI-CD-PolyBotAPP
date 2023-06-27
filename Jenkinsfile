@@ -29,7 +29,7 @@ pipeline {
           securityContext:
             runAsUser: 0
             fsGroup: 0
-            ruAsNonRoot: 0
+            runAsNonRoot: 0
           containers:
           - name: jenkins-agent
             image:  019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:jenkins4
