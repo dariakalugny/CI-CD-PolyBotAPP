@@ -16,6 +16,7 @@ pipeline {
 
       label 'jenkins-eks-pod'
       defaultContainer 'jenkins-agent'
+      cloud 'EKS'
 
       yaml '''
         apiVersion: v1
