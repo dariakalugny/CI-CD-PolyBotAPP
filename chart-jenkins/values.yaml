@@ -1,5 +1,7 @@
-service:
- name-service: jenkins-admin
+
+
+serviceAccount:
+  name: jenkins-admin
 
 role:
   name-role: jenkins

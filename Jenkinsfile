@@ -11,7 +11,36 @@ pipeline {
     timeout(time: 10, unit: 'MINUTES')
 
    }
-     agent{ label 'ec2-fleet'  }
+    agent {
+    kubernetes {
+
+      defaultContainer 'jenkins-agent'
+      yaml '''
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          labels:
+            some-label: jenkins-eks-pod
+        spec:
+          serviceAccountName: jenkins-admin
+          containers:
+          - name: jenkins-agent
+            image:  019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:jenkins4
+            imagePullPolicy: Always
+            volumeMounts:
+             - name: jenkinsagent-pvc
+               mountPath: /var/run/docker.sock
+            tty: true
+          volumes:
+          - name: jenkinsagent-pvc
+            hostPath:
+              path: /var/run/docker.sock
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsUser: 0
+        '''
+    }
+  }
 
 
 
@@ -63,7 +92,7 @@ pipeline {
 
         stage('push') {
             steps {
-               docker.withRegistry('https://019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo', 'ecr:eu-west-1:AWS-Credentials')
+              withAWS(credentials: 'AWS-Credentials', region: 'eu-west-1')
                 {
                  //sh "docker login --username $user --password $pass"
                 //sh "docker push dariakalugny/daria-repo-${env.BUILD_NUMBER}"
@@ -75,7 +104,7 @@ pipeline {
        post{
             always{
                junit allowEmptyResults: true, testResults: 'results.xml'
-               sh "docker rmi dariakalugny/daria-repo-${env.BUILD_NUMBER}"
+              /// sh "docker rmi dariakalugny/daria-repo-${env.BUILD_NUMBER}"
             }
 
        }
