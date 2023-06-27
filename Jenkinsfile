@@ -14,7 +14,9 @@ pipeline {
     agent {
     kubernetes {
 
+      label 'jenkins-eks-pod'
       defaultContainer 'jenkins-agent'
+
       yaml '''
         apiVersion: v1
         kind: Pod
