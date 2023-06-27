@@ -85,7 +85,7 @@ pipeline {
            steps {
            //     sh "docker build -f /home/ec2-user/PolyBot/Dockerfile -t 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo-${env.BUILD_NUMBER} . "
           // sh "docker build -f /home/ec2-user/PolyBot/Dockerfile -t  daria-ecr-repo:latest 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:latest"
-            sh "docker build -t daria-ecr-repo ."
+            sh "docker build -f /home/ec2-user/PolyBot/Dockerfile -t daria-ecr-repo ."
             sh "docker tag daria-ecr-repo:latest 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:latest"
            }
         }
