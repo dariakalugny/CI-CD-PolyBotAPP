@@ -21,9 +21,6 @@ pipeline {
       yaml '''
         apiVersion: v1
         kind: Pod
-        metadata:
-          labels:
-            some-label: jenkins-eks-pod
         spec:
           serviceAccountName: jenkins-admin
 
