@@ -26,10 +26,7 @@ pipeline {
             some-label: jenkins-eks-pod
         spec:
           serviceAccountName: jenkins-admin
-          securityContext:
-            runAsUser: 0
-            fsGroup: 0
-            runAsNonRoot: 0
+
           containers:
           - name: jenkins-agent
             image:  019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:jenkins4
