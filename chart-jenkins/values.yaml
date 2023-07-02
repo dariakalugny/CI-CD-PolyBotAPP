@@ -1,17 +1,9 @@
+image:
+  repository: jenkins/jenkins
+  tag: lts-jdk11
+  pullPolicy: InfotPresent
+name: jenkins-server
 
+volume:
+  name: jenkins-server-pvc
 
-serviceAccount:
-  name: jenkins-admin
-
-role:
-  name-role: jenkins
-
-secret:
- name-secret: mysecretname
-
-pvc:
- name-pvc: jenkinsagent-pvc
-
-
-namespace:
-  name: daria-jenkins
