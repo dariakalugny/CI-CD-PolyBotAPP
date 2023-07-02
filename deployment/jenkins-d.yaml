@@ -20,7 +20,7 @@ spec:
            claimName: jenkins-server-pvc
      containers:
        - name: jenkins-server
-         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+         image: jenkins/jenkins:lts-jdk11
          volumeMounts:
            - mountPath: /home/var/lib/jenkins
              name: jenkins-server-pvc
