@@ -22,5 +22,5 @@ spec:
        - name: jenkins-server
          image: jenkins/jenkins:lts-jdk11
          volumeMounts:
-           - mountPath: /home/var/lib/jenkins
+           - mountPath: /var/lib/jenkins
              name: jenkins-server-pvc

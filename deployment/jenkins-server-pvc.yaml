@@ -3,6 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: jenkins-server-pvc
 spec:
+  hostPath:
+    path: "/var/lib/jenkins"
   accessModes:
     - ReadWriteMany
   resources:
