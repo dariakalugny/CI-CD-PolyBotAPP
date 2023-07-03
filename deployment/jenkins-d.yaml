@@ -16,8 +16,12 @@ spec:
    spec:
      volumes:
        - name: jenkins-server-pvc
+         hostPath:
+           path: /var/lib/jenkins
+           type: DirectoryOrCreate
          persistentVolumeClaim:
            claimName: jenkins-server-pvc
+
      containers:
        - name: jenkins-server
          image: jenkins/jenkins:lts-jdk11
