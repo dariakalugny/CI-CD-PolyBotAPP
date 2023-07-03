@@ -8,6 +8,4 @@ spec:
 
   resources:
     requests:
-      storage: 5Gi
-  hostPath:
-    path: "/var/lib/jenkins"
+      storage: 10Gi
