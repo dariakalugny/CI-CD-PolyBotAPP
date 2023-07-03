@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: jenkins-server-pvc
+  name: jenkins-server-pv
   labels:
     type: local
 spec:
