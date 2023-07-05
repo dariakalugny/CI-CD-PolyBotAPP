@@ -15,12 +15,12 @@ spec:
        tier: backend
    spec:
    volumes:
-   - name: jenkins-server-pvc
-     hostPath:
-       # directory location on host
-       path: /var/lib/jenkins
-       # this field is optional
-       type: Directory
+    - name: jenkins-server-pvc
+      hostPath:
+        # directory location on host
+        path: /var/lib/jenkins
+        # this field is optional
+        type: Directory
 
      containers:
        - name: jenkins-server
