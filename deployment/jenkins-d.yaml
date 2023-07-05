@@ -14,13 +14,10 @@ spec:
        app:  jenkins-server
        tier: backend
    spec:
-   volumes:
-    - name: jenkins-server-pvc
-      hostPath:
-        # directory location on host
-        path: /var/lib/jenkins
-        # this field is optional
-        type: Directory
+     volumes:
+       - name: jenkins-server-pvc
+         persistentVolumeClaim:
+           claimName: jenkins-server-pvc
 
      containers:
        - name: jenkins-server
