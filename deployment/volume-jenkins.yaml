@@ -23,7 +23,14 @@ spec:
     - ReadWriteOnce
   local:
     path: /var/lib/jenkins
-
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - worker-node01
 
 ---
 apiVersion: v1
