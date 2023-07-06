@@ -15,9 +15,9 @@ spec:
        tier: backend
    spec:
      volumes:
-       - name: jenkins-server-pv
+       - name: jenkins-server-pvc
          persistentVolumeClaim:
-           claimName: jenkins-server-pv
+           claimName: jenkins-server-pvc
 
      containers:
        - name: jenkins-server
