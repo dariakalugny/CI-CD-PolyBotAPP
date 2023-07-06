@@ -15,13 +15,13 @@ spec:
        tier: backend
    spec:
      volumes:
-       - name: jenkins-pv-claim
+       - name: jenkins-server-pv
          persistentVolumeClaim:
-           claimName: jenkins-pv-claim
+           claimName: jenkins-server-pv
 
      containers:
        - name: jenkins-server
          image: jenkins/jenkins:lts-jdk11
          volumeMounts:
-           - mountPath: /var/lib/jenkins
-             name: jenkins-pv-claim
+           - mountPath: "/var/lib/jenkins"
+             name: jenkins-server-pv
