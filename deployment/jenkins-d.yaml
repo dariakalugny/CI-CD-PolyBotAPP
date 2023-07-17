@@ -15,9 +15,9 @@ spec:
        tier: backend
    spec:
      volumes:
-       - name: jenkins-server-pvc
+       - name: persistent-storage
          persistentVolumeClaim:
-           claimName: jenkins-server-pvc
+           claimName: efs-claim
 
      containers:
        - name: jenkins-server
