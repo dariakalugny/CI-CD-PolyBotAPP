@@ -20,13 +20,28 @@ spec:
 
 ---
 apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jenkins-server-pv
+spec:
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: efs-sc
+
+---
+
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: jenkins-server-pvc
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: efs-sc
   resources:
     requests:
-      storage: 5Gi
+      storage: 10Gi
+storageClassName: efs-sc
