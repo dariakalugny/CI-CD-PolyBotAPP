@@ -18,9 +18,9 @@ spec:
        - name: persistent-storage
          persistentVolumeClaim:
            claimName: efs-claim
-     ports:
-       - protocol: TCP
-         port: 8080
+
      containers:
        - name: jenkins-server
          image: 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:jenkins-server
+         ports:
+           - containerPort: 8080
