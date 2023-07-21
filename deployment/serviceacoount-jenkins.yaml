@@ -4,6 +4,9 @@ metadata:
   name: jenkins-admin
   namespace: daria-jenkins
 spec:
+  selector:
+    app: jenkins-server
+    tier: backend
   ports:
     - protocol: TCP
       port: 8080
