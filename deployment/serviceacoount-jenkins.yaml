@@ -3,3 +3,8 @@ kind: ServiceAccount
 metadata:
   name: jenkins-admin
   namespace: daria-jenkins
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
