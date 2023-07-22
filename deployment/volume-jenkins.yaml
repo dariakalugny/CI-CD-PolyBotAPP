@@ -7,7 +7,7 @@ spec:
     storage: 5Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   storageClassName: ""
   persistentVolumeReclaimPolicy: Retain
   csi:
@@ -21,7 +21,7 @@ metadata:
   name: efs-claim
 spec:
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   storageClassName: ""
   resources:
     requests:
