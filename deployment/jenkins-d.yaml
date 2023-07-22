@@ -17,7 +17,7 @@ spec:
      volumes:
        - name: persistent-storage
          persistentVolumeClaim:
-           claimName: efs-pvc
+           claimName: efs-pv
 
      containers:
        - name: jenkins-server
