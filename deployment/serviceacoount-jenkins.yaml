@@ -5,6 +5,8 @@ metadata:
   namespace: daria-jenkins
 spec:
   type: LoadBalancer
+  clusterIP: 10.100.131.97
+
   selector:
     app: jenkins-server
     tier: backend
