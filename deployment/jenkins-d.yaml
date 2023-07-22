@@ -24,6 +24,6 @@ spec:
          image: 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:jenkins-server
          volumeMount:
            - name:
-             mountPath: /tmp/jenkins
+             mountPath: /var/jenkins_home
          ports:
            - containerPort: 8080
