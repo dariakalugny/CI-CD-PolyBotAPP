@@ -7,8 +7,8 @@ spec:
     storage: 5Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
-  storageClassName: ""
+    - ReadWriteMany
+  storageClassName: efs-storage
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: efs.csi.aws.com
@@ -18,11 +18,11 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: efs-claim
+  name: efs-pvc
 spec:
   accessModes:
-    - ReadWriteOnce
-  storageClassName: ""
+    - ReadWriteMany
+  storageClassName: efs-storage
   resources:
     requests:
       storage: 5Gi
