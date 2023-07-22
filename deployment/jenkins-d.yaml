@@ -26,6 +26,5 @@ spec:
            - name: efs-pv
              mountPath: /var/jenkins_home
 
-
          ports:
            - containerPort: 8080
