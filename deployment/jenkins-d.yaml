@@ -22,5 +22,8 @@ spec:
      containers:
        - name: jenkins-server
          image: 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:jenkins-server
+         volumeMount:
+           - name:
+             mountPath: /tmp/jenkins
          ports:
            - containerPort: 8080
