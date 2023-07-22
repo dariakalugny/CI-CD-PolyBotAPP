@@ -4,6 +4,7 @@ metadata:
   name: jenkins-admin
   namespace: daria-jenkins
 spec:
+  type: LoadBalancer
   selector:
     app: jenkins-server
     tier: backend
