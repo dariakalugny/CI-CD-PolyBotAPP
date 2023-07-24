@@ -25,6 +25,6 @@ spec:
      volumes:
        - name: persistent-storage
          persistentVolumeClaim:
-           claimName: efs-pvc
+           claimName: daria-efs-pvc
          ports:
            - containerPort: 8080
