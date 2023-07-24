@@ -22,9 +22,9 @@ spec:
          volumeMounts:
            - name: persistent-storage
              mountPath: /var/jenkins_home
+         ports:
+           - containerPort: 8080
      volumes:
        - name: persistent-storage
          persistentVolumeClaim:
            claimName: daria-efs-pvc
-         ports:
-           - containerPort: 8080
