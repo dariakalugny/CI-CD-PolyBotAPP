@@ -14,17 +14,17 @@ spec:
        app:  jenkins-server
        tier: backend
    spec:
-     volumes:
-       - name: persistent-storage
-         persistentVolumeClaim:
-           claimName: efs-pv
 
+     serviceAccountName: jenkins-admin
      containers:
        - name: jenkins-server
          image: 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:jenkins-server
          volumeMounts:
-           - name: efs-pv
+           - name: persistent-storage
              mountPath: /var/jenkins_home
-
+     volumes:
+       - name: persistent-storage
+         persistentVolumeClaim:
+           claimName: efs-pvc
          ports:
            - containerPort: 8080
