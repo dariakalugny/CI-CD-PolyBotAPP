@@ -15,7 +15,7 @@ spec:
     storage: 5Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: efs-storage
   persistentVolumeReclaimPolicy: Retain
   csi:
@@ -29,7 +29,7 @@ metadata:
   name: daria-efs-pvc
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   storageClassName: efs-storage
   resources:
     requests:
