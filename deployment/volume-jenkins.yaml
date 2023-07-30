@@ -9,7 +9,7 @@ provisioner: efs.csi.aws.com
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: daria-efs-pv
+  name: daria-efs-pv2
 spec:
   capacity:
     storage: 5Gi
