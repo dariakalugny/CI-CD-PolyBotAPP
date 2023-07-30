@@ -4,7 +4,7 @@ metadata:
   name: efs-storage
 provisioner: efs.csi.aws.com
 parameters:
-  provisioningMode: efs-sc
+  provisioningMode: efs-ap
 
 ---
 
