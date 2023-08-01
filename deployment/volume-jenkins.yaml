@@ -11,7 +11,7 @@ parameters:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: daria-efs-pv2
+  name: daria-efs-pv3
 spec:
   capacity:
     storage: 5Gi
