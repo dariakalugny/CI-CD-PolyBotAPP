@@ -17,6 +17,12 @@ spec:
      containers:
        - name: jenkins-server
          image: 019273956931.dkr.ecr.eu-west-1.amazonaws.com/daria-ecr-repo:jenkins-server
+         resources:
+           requests:
+             memory: "100Mi"
+           limits:
+             memory: "200Mi"
+
          volumeMounts:
            - name: persistent-storage
              mountPath: /var/jenkins_home
