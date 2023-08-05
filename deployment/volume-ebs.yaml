@@ -4,6 +4,7 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: ebs-storage
 provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: Immediate
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
