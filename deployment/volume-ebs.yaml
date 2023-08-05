@@ -33,7 +33,6 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: ebs-storage
 provisioner: kubernetes.io/no-provisioner
-volumeBindingMode: WaitForFirstConsumer
 ---
 apiVersion: v1
 kind: PersistentVolume
