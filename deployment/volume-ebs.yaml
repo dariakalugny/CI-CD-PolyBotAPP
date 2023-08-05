@@ -42,7 +42,7 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: local-storage
+  storageClassName: ebs-storage
   claimRef:
     name: jenkins-pv-claim
     namespace: daria-jenkins2
