@@ -18,7 +18,7 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
-  storageClassName: efs-storage
+  storageClassName: manual
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: efs.csi.aws.com
